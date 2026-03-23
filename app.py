@@ -67,7 +67,7 @@ import io
 
 @st.cache_data
 def load_data():
-    url = "https://github.com/Kiruthika-Arunchalam/SSS-Data-Analytics-March-2026/blob/main/SSS-Mar.zip"
+    url = "https://raw.githubusercontent.com/Kiruthika-Arunchalam/SSS-Data-Analytics-March-2026/main/SSS-Mar.zip"
     r = requests.get(url)
     z = zipfile.ZipFile(io.BytesIO(r.content))
 
