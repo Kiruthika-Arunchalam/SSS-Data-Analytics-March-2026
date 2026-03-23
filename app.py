@@ -61,14 +61,32 @@ st.markdown('<div class="title">SSS DATA ANALYTICS (MARCH)</div>', unsafe_allow_
 
 # ---------------------------
 # LOAD DATA (AUTO REFRESH FIX)
-# ---------------------------
-file_path = r"C:\Users\sm2069\Desktop\SSS-Mar\data\SSS-Mar_26.csv"
+import zipfile
+import requests
+import io
 
 @st.cache_data
-def load_data(path, modified_time):
-    return pd.read_csv(path)
+def load_data():
+    url = "https://github.com/Kiruthika-Arunchalam/SSS-Data-Analytics-March-2026/blob/main/SSS-Mar.zip"
+    r = requests.get(url)
+    z = zipfile.ZipFile(io.BytesIO(r.content))
 
-df = load_data(file_path, os.path.getmtime(file_path))
+    # 🔥 Find actual CSV file
+    csv_file = None
+    for file in z.namelist():
+        if file.endswith(".csv"):
+            csv_file = file
+            break
+
+    if csv_file is None:
+        raise Exception("No CSV file found inside ZIP")
+
+    df = pd.read_csv(z.open(csv_file))
+
+    return df
+
+df = load_data()
+
 
 # ---------------------------
 # DATE CLEAN
