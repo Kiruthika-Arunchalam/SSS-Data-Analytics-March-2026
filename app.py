@@ -2,6 +2,42 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 import os
+st.markdown("""
+<style>
+
+/* 🔥 Force full app background */
+html, body, [data-testid="stAppViewContainer"] {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+}
+
+/* 🔥 Main container */
+[data-testid="stAppViewContainer"] > .main {
+    background-color: #ffffff !important;
+}
+
+/* 🔥 Sidebar (if any) */
+[data-testid="stSidebar"] {
+    background-color: #f5f5f5 !important;
+}
+
+/* 🔥 Remove dark header */
+[data-testid="stHeader"] {
+    background: #ffffff !important;
+}
+
+/* 🔥 Toolbar (top right area) */
+[data-testid="stToolbar"] {
+    background: #ffffff !important;
+}
+
+/* 🔥 Fix text everywhere */
+* {
+    color: #000000 !important;
+}
+
+</style>
+""", unsafe_allow_html=True)
 
 # ---------------------------
 # CONFIG
